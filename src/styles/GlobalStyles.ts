@@ -29,19 +29,8 @@ export default createGlobalStyle`
     background: #f9f9f9;
      // Scroll
   ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
-  }
-  // color scroll
-  ::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #ccc;
+    width: 0px;
+
   }
 
   body {

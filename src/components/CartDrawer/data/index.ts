@@ -13,4 +13,40 @@ export const products = [
     name: "Apple Homepod",
     price: 399,
   },
+  {
+    id: 3,
+    img: ImgTest,
+    name: "Apple Homepod",
+    price: 399,
+  },
+  {
+    id: 4,
+    img: ImgTest,
+    name: "Apple Homepod",
+    price: 399,
+  },
+  {
+    id: 5,
+    img: ImgTest,
+    name: "Apple Homepod",
+    price: 399,
+  },
+  {
+    id: 6,
+    img: ImgTest,
+    name: "Apple Homepod",
+    price: 399,
+  },
+  {
+    id: 7,
+    img: ImgTest,
+    name: "Apple Homepod",
+    price: 399,
+  },
+  {
+    id: 8,
+    img: ImgTest,
+    name: "Apple Homepod",
+    price: 399,
+  },
 ];

@@ -8,12 +8,6 @@ export const CommonButton = styled.button`
   height: 31.907px;
 `;
 
-// Text Common
-export const CommonText = styled.p`
-  background-color: #373737;
-  color: #ffffff;
-`;
-
 // Card Title Common
 export const CommonCardTitle = styled.p``;
 
@@ -29,7 +23,7 @@ export const CommonCartCard = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 379px;
-  height: 95px;
+  padding: 15px;
   border-radius: 8px;
   background: #fff;
   box-shadow: -2px 2px 10px 0px rgba(0, 0, 0, 0.05);

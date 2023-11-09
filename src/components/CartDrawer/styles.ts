@@ -61,10 +61,24 @@ export const CartContent = styled.div`
   width: 80%;
   height: 100%;
   gap: 20px;
+  overflow-y: scroll;
+  padding: 25px 0;
 
   .count {
     display: flex;
   }
+`;
+
+export const TotalPrice = styled.div`
+  display: flex;
+  width: 80%;
+  padding: 35px 0;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-family: "Montserrat";
+  font-size: 28px;
+  font-weight: 700;
 `;
 
 export const EndCartContent = styled.button`

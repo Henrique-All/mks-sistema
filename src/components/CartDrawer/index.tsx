@@ -4,6 +4,7 @@ import {
   CartHeaderContent,
   Container,
   EndCartContent,
+  TotalPrice,
 } from "./styles";
 import { products } from "./data";
 import {
@@ -66,7 +67,10 @@ export default function CartDrawerComponent({
               </>
             ))}
           </CartContent>
-
+          <TotalPrice>
+            <p>Total:</p>
+            <strong>R$ 798</strong>
+          </TotalPrice>
           <EndCartContent>Finalizar Compra</EndCartContent>
         </Container>
       ) : null}
