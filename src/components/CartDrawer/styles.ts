@@ -66,6 +66,18 @@ export const CartContent = styled.div`
 
   .count {
     display: flex;
+    border-radius: 4px;
+    border: 0.3px solid #bfbfbf;
+    width: 50px;
+    height: 19px;
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+      border: none;
+      background-color: transparent;
+      height: 100%;
+    }
   }
 `;
 
