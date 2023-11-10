@@ -1,12 +1,11 @@
 "use client";
-import { HeaderComponent } from "@/components/HeaderComponent";
 import GlobalStyles from "@/styles/GlobalStyles";
-import Link from "next/link";
+import HomePage from "./pages/home";
 
 export default function Home() {
   return (
     <>
-      <HeaderComponent />
+      <HomePage />
       <GlobalStyles />
     </>
   );
