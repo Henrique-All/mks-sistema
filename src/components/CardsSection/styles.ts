@@ -13,7 +13,7 @@ export const CardContent = styled.div`
     justify-content: center;
     width: 400px;
     height: 601px;
-    margin: 0;
+    margin: auto;
     margin-top: 80px;
   }
 
