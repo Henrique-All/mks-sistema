@@ -7,12 +7,26 @@ export const HeaderMain = styled.header`
   height: 101px;
   background-color: #0f52ba;
   padding: 0 40px;
+
+  @media (max-width: 700px) {
+    padding: 0 20px;
+  }
 `;
 
 export const NavMain = styled.nav`
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: 700px) {
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width: 60px;
+      height: 20px;
+    }
+  }
 
   a {
     display: flex;
@@ -24,16 +38,15 @@ export const NavMain = styled.nav`
 export const Button = styled.button`
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 90px;
+  justify-content: center;
+  width: 50px;
   height: 45px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
 
-  span {
-    font-family: "Montserrat";
-    font-weight: 700;
-    font-size: 18px;
+  @media (max-width: 700px) {
+    width: 50px;
+    height: 45px;
   }
 `;

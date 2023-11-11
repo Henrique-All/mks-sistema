@@ -102,7 +102,7 @@ export const CommonCartCard = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 250px;
-    height: 220.047px;
+    height: 200px;
     margin: 0;
     margin-top: 80px;
   }

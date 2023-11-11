@@ -34,7 +34,6 @@ export default function HomePage() {
 
           <Button onClick={handleButtonClick}>
             <Image src={Car} alt="" />
-            <span></span>
           </Button>
         </NavMain>
       </HeaderMain>

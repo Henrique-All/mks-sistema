@@ -17,6 +17,13 @@ export const CardContent = styled.div`
     margin-top: 80px;
   }
 
+  @media (max-width: 350px) {
+    width: 400px;
+    height: 601px;
+    margin: 0 0 0 -40px;
+    margin-top: 80px;
+  }
+
   .card-main {
     display: flex;
     width: 50%;
