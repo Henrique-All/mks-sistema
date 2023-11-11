@@ -7,13 +7,17 @@ import Car from "@/assets/icons/carIcon.svg";
 import CartDrawerComponent from "@/components/CartDrawer";
 import { useState } from "react";
 import { useProducts } from "@/hooks";
+import CardsSection from "@/components/CardsSection";
+import { CardContent } from "@/components/CardsSection/styles";
 
 export default function HomePage() {
   const [openSwiper, setOpenSwiper] = useState(false);
 
   const { products, isLoading } = useProducts();
 
-  console.log(products);
+  if (isLoading) {
+    return <div>Carregando...</div>;
+  }
 
   const handleButtonClick = () => {
     setOpenSwiper(!openSwiper);
@@ -24,13 +28,13 @@ export default function HomePage() {
       <HeaderMain>
         <NavMain>
           <Link href="/">
-            <Image src={MKS} alt="" />
-            <Image src={System} alt="" />
+            <Image src={MKS} alt="" priority={false} />
+            <Image src={System} alt="" priority={false} />
           </Link>
 
           <Button onClick={handleButtonClick}>
             <Image src={Car} alt="" />
-            <span>0</span>
+            <span></span>
           </Button>
         </NavMain>
       </HeaderMain>
@@ -38,6 +42,21 @@ export default function HomePage() {
         OpenSwiper={openSwiper}
         setOpenSwiper={setOpenSwiper}
       />
+
+      <CardContent>
+        {products.map((item) => (
+          <div key={String(item.id)}>
+            <CardsSection
+              id={item.id}
+              description={item.description}
+              name={item.name}
+              photo={item.photo}
+              price={item.price}
+              brand={item.brand}
+            />
+          </div>
+        ))}
+      </CardContent>
     </>
   );
 }

@@ -27,6 +27,7 @@ export default createGlobalStyle`
 
   html {
     background: #f9f9f9;
+    user-select: none;
      // Scroll
   ::-webkit-scrollbar {
     width: 0px;

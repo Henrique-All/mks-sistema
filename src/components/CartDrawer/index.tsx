@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CartContent,
   CartHeaderContent,
@@ -6,13 +6,13 @@ import {
   EndCartContent,
   TotalPrice,
 } from "./styles";
-import { products } from "./data";
 import {
   CommonCartCard,
   CommonCartNameProduct,
   CommonCartPrice,
 } from "@/styles/Commons";
 import Image from "next/image";
+import { deleteProducts, getProducts } from "@/utils/storage";
 
 interface Swiper {
   OpenSwiper: boolean;
@@ -23,20 +23,53 @@ export default function CartDrawerComponent({
   OpenSwiper,
   setOpenSwiper,
 }: Swiper) {
-  const [count, setCount] = useState(1);
+  const [products, setProducts] = useState<any>([]);
+  const [total, setTotal] = useState(0);
+  const [countMap, setCountMap] = useState<{ [key: number]: number }>({});
 
-  const increment = () => {
-    setCount(count + 1);
+  const increment = (productId: number) => {
+    setCountMap((prevCountMap) => ({
+      ...prevCountMap,
+      [productId]: (prevCountMap[productId] || 0) + 1,
+    }));
   };
 
-  const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
+  const decrement = (productId: number) => {
+    if (countMap[productId] && countMap[productId] > 1) {
+      setCountMap((prevCountMap) => ({
+        ...prevCountMap,
+        [productId]: prevCountMap[productId] - 1,
+      }));
     }
   };
+
   const handleCloseClick = () => {
     setOpenSwiper(false);
   };
+
+  const handleDelete = async (id: number) => {
+    const response = await deleteProducts(id);
+    setProducts(response);
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await getProducts();
+        const totalPrice = response.reduce(
+          (acc, item) => acc + (item.price || 0) * (countMap[item.id] || 1),
+          0
+        );
+        setProducts(response);
+        setTotal(totalPrice);
+      } catch (error) {
+        console.error("Erro ao buscar favoritos:", error);
+      }
+    }
+
+    fetchData();
+  }, [countMap, products]);
+
   return (
     <>
       {OpenSwiper ? (
@@ -52,24 +85,31 @@ export default function CartDrawerComponent({
           </CartHeaderContent>
 
           <CartContent>
-            {products.map((item) => (
-              <>
-                <CommonCartCard>
-                  <Image src={item.img} alt="" />
-                  <CommonCartNameProduct>{item.name}</CommonCartNameProduct>
+            {products.map((item: any) => (
+              <CommonCartCard key={item.id}>
+                <button
+                  type="button"
+                  className="close"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  X
+                </button>
+                <Image src={item.photo} alt="" width={40} height={40} />
+                <CommonCartNameProduct>{item.name}</CommonCartNameProduct>
+                <div className="price-content">
                   <div className="count">
-                    <button onClick={increment}>+</button>
-                    <p>{count}</p>
-                    <button onClick={decrement}>-</button>
+                    <button onClick={() => decrement(item.id)}>-</button>
+                    <p>{countMap[item.id] || 1}</p>
+                    <button onClick={() => increment(item.id)}>+</button>
                   </div>
                   <CommonCartPrice>R$ {item.price}</CommonCartPrice>
-                </CommonCartCard>
-              </>
+                </div>
+              </CommonCartCard>
             ))}
           </CartContent>
           <TotalPrice>
             <p>Total:</p>
-            <strong>R$ 798</strong>
+            <strong>R$ {total}</strong>
           </TotalPrice>
           <EndCartContent>Finalizar Compra</EndCartContent>
         </Container>

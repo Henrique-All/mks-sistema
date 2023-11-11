@@ -20,6 +20,12 @@ export const Container = styled.div`
       transform: translateX(0);
     }
   }
+
+  @media (max-width: 900px) {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const CartHeaderContent = styled.div`
@@ -56,27 +62,71 @@ export const CartHeaderContent = styled.div`
 `;
 
 export const CartContent = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 80%;
   height: 100%;
   gap: 20px;
   overflow-y: scroll;
   padding: 25px 0;
 
+  .price-content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .close {
+    width: 18px;
+    height: 18px;
+    background-color: #000000;
+    border-radius: 50%;
+    color: #ffffff;
+    border: none;
+    position: absolute;
+    right: 0;
+    margin: 0 0 80px 0;
+
+    @media (max-width: 600px) {
+      width: 45.922px;
+      height: 45.922px;
+      background-color: #000000;
+      border-radius: 50%;
+      color: #ffffff;
+      border: none;
+      position: absolute;
+      right: 30px;
+      margin: 0 0 190px 0;
+    }
+  }
+
   .count {
     display: flex;
     border-radius: 4px;
     border: 0.3px solid #bfbfbf;
     width: 50px;
-    height: 19px;
+    height: 20px;
     justify-content: space-around;
     align-items: center;
+    padding: 10px 2px;
+    width: 50px;
 
     button {
       border: none;
       background-color: transparent;
-      height: 100%;
+      color: #000;
+      cursor: pointer;
+      font-family: "Montserrat";
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    span {
+      width: 0.3px;
+      height: 11.5px;
+      background-color: rgba(0, 0, 0, 0.2);
     }
   }
 `;
