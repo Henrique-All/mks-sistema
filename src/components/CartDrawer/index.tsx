@@ -92,7 +92,7 @@ export default function CartDrawerComponent({
                   className="close"
                   onClick={() => handleDelete(item.id)}
                 >
-                  F
+                  X
                 </button>
                 <Image src={item.photo} alt="" width={40} height={40} />
                 <CommonCartNameProduct>{item.name}</CommonCartNameProduct>
