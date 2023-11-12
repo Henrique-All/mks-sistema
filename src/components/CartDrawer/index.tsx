@@ -56,14 +56,17 @@ export default function CartDrawerComponent({
     async function fetchData() {
       try {
         const response = await getProducts();
+
         const totalPrice = response.reduce(
           (acc, item) => acc + (item.price || 0) * (countMap[item.id] || 1),
           0
         );
         setProducts(response);
         setTotal(totalPrice);
+
+        // console.log(response);
       } catch (error) {
-        console.error("Erro ao buscar favoritos:", error);
+        console.error("Erro ao buscar produto:", error);
       }
     }
 
@@ -75,10 +78,7 @@ export default function CartDrawerComponent({
       {OpenSwiper ? (
         <Container>
           <CartHeaderContent>
-            <p>
-              Carrinho <br />
-              de compras
-            </p>
+            <p>Carrinho de compras</p>
             <button type="button" onClick={handleCloseClick}>
               <span>X</span>
             </button>
@@ -92,7 +92,7 @@ export default function CartDrawerComponent({
                   className="close"
                   onClick={() => handleDelete(item.id)}
                 >
-                  X
+                  F
                 </button>
                 <Image src={item.photo} alt="" width={40} height={40} />
                 <CommonCartNameProduct>{item.name}</CommonCartNameProduct>
